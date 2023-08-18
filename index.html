@@ -4,29 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
+    <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
+  </head
+  >
   <body>
+    <style>
+      .gameButton {
+        width: 100px;
+        height: 100px; 
+        position: absolute;
+        font-size: xx-large;
+      }
+      </style>
     <main>
+      
         <h1>Tic Tac Toe</h1>  
-        <button id="b1" style="width: 100px; height: 100px;"></button>
-        <button id="b2" style="width: 100px; height: 100px;"></button>
-        <button id="b3" style="width: 100px; height: 100px;"></button>
+        <button id="b1" class="gameButton" style=" left: 10px; top: 75px;"></button>
+        <button id="b2" class="gameButton" style="left: 130px; top: 75px;"></button>
+        <button id="b3" class="gameButton" style="left: 250px; top: 75px; "></button>
         <br />
         <br />
-        <button id="b4" style="width: 100px; height: 100px;"></button>
-        <button id="b5" style="width: 100px; height: 100px;"></button>
-        <button id="b6" style="width: 100px; height: 100px;"></button>
+        <button id="b4" class="gameButton"  style="left: 10px; top: 195px;"></button>
+        <button id="b5" class="gameButton"  style="left: 130px; top: 195px;"></button> 
+        <button id="b6" class="gameButton"  style="left: 250px; top: 195px;"></button>
         <br />
         <br />
-        <button id="b7" style="width: 100px; height: 100px;"></button>
-        <button id="b8" style="width: 100px; height: 100px;"></button>
-        <button id="b9" style="width: 100px; height: 100px;"></button>
+        <button id="b7" class="gameButton"  style="left: 10px; top: 315px;"></button>
+        <button id="b8" class="gameButton"  style="left: 130px; top: 315px;"></button>
+        <button id="b9" class="gameButton"  style="left: 250px; top: 315px;"></button>
         <br />
         <br />
-        <h1 id="gameResult"></h1>  
+
+        <h1 id="gameResult" style="position: absolute;  left: 10px; top: 400px;"></h1>
+        <button id="restartGame" style="width: 100px; height: 25px; position: absolute;  left: 10px; top: 500px">Restart</button>
     </main>
 	<script src="index.js"></script>
   </body>
