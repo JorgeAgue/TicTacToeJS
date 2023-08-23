@@ -2,6 +2,7 @@
 const btns = document.querySelectorAll('button[id^=b]')
 const reBtn = document.querySelectorAll('button[id^=r]')
 const myBtn = document.getElementById("myBtn");
+var sound = new Audio('PieceSound.mp3');
 var p1Pos = [];
 var cpuPos = [];
 var gameEnd= false;
@@ -34,6 +35,7 @@ const obj =
             else if(winCon.every(i=>cpuPos.includes(i)))
             {
                 document.getElementById('gameResult').innerHTML = "You lose...";
+                console.log('lose');
                 gameEnd= true;
                 this.endGame();
             }
@@ -50,6 +52,7 @@ const obj =
     
     cpuTurn()
     {
+            
         if(!gameEnd)
         {
         var randomNum = Math.floor(Math.random() * 9)+1;
@@ -60,6 +63,7 @@ const obj =
         }
         
         cpuPos.push(randomNum);
+        sound.play();
         
         
         switch (randomNum)
@@ -113,7 +117,6 @@ const obj =
 
         obj.checkWinner()
     }
-
     },
     
     endGame()
@@ -134,6 +137,7 @@ btns.forEach(btn =>
     btn.textContent = 'X';
     btn.disabled = true;
     btn.style.color='blue';
+    sound.play();
     p1Pos.push(parseInt(event.target.id.slice(1)));
     obj.checkWinner();
     obj.cpuTurn();

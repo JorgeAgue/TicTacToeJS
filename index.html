@@ -15,20 +15,40 @@
         width: 100px;
         height: 100px; 
         position: absolute;
-        font-size: xx-large;
+        font-size: 48px;
+        background: transparent;
+        border: none;
       }
+      .vertline {
+        border-left: 6px solid black;
+        height: 375px;
+        position: absolute;
+        }
+      .hortline {
+        border: 4px solid black;
+        position: absolute;
+        width: 360px;
+      }
+      .text
+      {
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+      }
+      
       </style>
     <main>
-      
-        <h1>Tic Tac Toe</h1>  
+        <h1 class="text">Tic Tac Toe</h1>  
         <button id="b1" class="gameButton" style=" left: 10px; top: 75px;"></button>
         <button id="b2" class="gameButton" style="left: 130px; top: 75px;"></button>
         <button id="b3" class="gameButton" style="left: 250px; top: 75px; "></button>
+        <div class="vertline" style="left: 120px; top: 65px;"></div>
+        <hr class="hortline"  style="left: 5px; top: 175px;"/>
         <br />
         <br />
         <button id="b4" class="gameButton"  style="left: 10px; top: 195px;"></button>
         <button id="b5" class="gameButton"  style="left: 130px; top: 195px;"></button> 
         <button id="b6" class="gameButton"  style="left: 250px; top: 195px;"></button>
+        <div class="vertline" style="left: 240px; top: 65px;"></div>
+        <hr class="hortline"  style="left: 5px; top: 295px;"/>
         <br />
         <br />
         <button id="b7" class="gameButton"  style="left: 10px; top: 315px;"></button>
@@ -37,8 +57,8 @@
         <br />
         <br />
 
-        <h1 id="gameResult" style="position: absolute;  left: 10px; top: 400px;"></h1>
-        <button id="restartGame" style="width: 100px; height: 25px; position: absolute;  left: 10px; top: 500px">Restart</button>
+        <h1 class="text" id="gameResult" style="position: absolute;  left: 10px; top: 425px;"></h1>
+        <button class="text"  id="restartGame" style="width: 100px; height: 25px; position: absolute;  left: 10px; top: 500px">Restart</button>
     </main>
 	<script src="index.js"></script>
   </body>

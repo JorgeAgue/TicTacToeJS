@@ -6,17 +6,19 @@ A tic tac toe website using Javascript with HTML
 # Features
 Tic Tac Toe: Allows the user to play a game of Tic Tac Toe with a random AI
 
+Restart: Allows the user to start an other game at any point
+
 # To-do
 ✅ Basic Functionality required for game
 
 ☐ Fix a bug where winning on the 9th turn will result in the stalemate message popping up
 
-☐ Add line dividers between each button like a standard tic tac toe game
+✅ Add line dividers between each button like a standard tic tac toe game
 
-☐ Spurce up UI with various elements
+✅ Spurce up UI with various elements
 
-☐ Disable all game buttons after game is done
+✅ Disable all game buttons after game is done
 
-☐ Allow user to restart the game without needing refresh the page
+✅ Allow user to restart the game without needing refresh the page
 
 ☐ Refactor the switch case to disable a button after the CPU has made a move
