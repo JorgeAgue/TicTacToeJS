@@ -2,6 +2,7 @@
 A tic tac toe website using Javascript with HTML
 
 <img width="323" alt="Screenshot 2023-08-30 165202" src="https://github.com/JorgeAgue/TicTacToeJS/assets/98124296/259fd2de-60c9-45cb-a1f9-f86c57b1faf8">
+<img width="317" alt="Screenshot 2023-08-23 180938" src="https://github.com/JorgeAgue/TicTacToeJS/assets/98124296/dc940c74-45f1-48ac-a727-7a02aa1127d2">
 
 # Features
 Tic Tac Toe: Allows the user to play a game of Tic Tac Toe with a random AI
