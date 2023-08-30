@@ -1,12 +1,23 @@
 //Javascript bit
-const btns = document.querySelectorAll('button[id^=b]')
-const reBtn = document.querySelectorAll('button[id^=r]')
+const btns = document.querySelectorAll('button[id^=b]');
+const reBtn = document.querySelectorAll('button[id^=r]');
 const myBtn = document.getElementById("myBtn");
 var sound = new Audio('PieceSound.mp3');
 var p1Pos = [];
 var cpuPos = [];
 var gameEnd= false;
 
+var winLine = document.getElementById("hWLine1");
+
+const topLinePos = [];
+topLinePos.push("115px", "235px", "355px", "225px", "225px", "225px", "235px", "235px");
+const leftLinePos = [];
+leftLinePos.push("5px","5px","5px","-125px","-3px","115px","5px","5px");
+const lineOren = [];
+lineOren.push("rotate(0deg)","rotate(0deg)","rotate(0deg)","rotate(90deg)","rotate(90deg)","rotate(90deg)","rotate(45deg)","rotate(-45deg)")
+
+const lineColor = [];
+lineColor.push("4px solid blue", "4px solid red");
 
 const obj = 
 {
@@ -23,48 +34,63 @@ const obj =
         winningPos.push([1,5,9]); //Cross1
         winningPos.push([3,5,7]); //Cross2
         
-        winningPos.forEach((winCon) =>
+        var i =0; //Variable that keeps track of current winCon being checked
+        
+        winningPos.forEach((winCon) => //Looking through each win condition
         {
-            if(winCon.every(i=> p1Pos.includes(i)))
+            if(winCon.every(i=> p1Pos.includes(i))) //If p1pos contains nums to current win condition
             {
+                //Change where line appears based on what winCon was achieved
+                winLine.style.transform = lineOren[i];
+                winLine.style.left= leftLinePos[i];
+                winLine.style.top= topLinePos[i];
+
+                winLine.style.border = lineColor[0];
+                winLine.style.visibility = "visible";
+
                 document.getElementById('gameResult').innerHTML = "You won!";
-                console.log('win');
+
                 gameEnd= true;
                 this.endGame();
             }
             else if(winCon.every(i=>cpuPos.includes(i)))
             {
+                winLine.style.transform = lineOren[i];
+                winLine.style.left= leftLinePos[i];
+                winLine.style.top= topLinePos[i];
+
+                winLine.style.border = lineColor[1];
+                winLine.style.visibility = "visible";
+                
                 document.getElementById('gameResult').innerHTML = "You lose...";
-                console.log('lose');
+
                 gameEnd= true;
                 this.endGame();
             }
-            else if(p1Pos.length + cpuPos.length == 9) //Bug where if 9th piece is winning piece, stale mate still occurs
-            {
-                console.log('stalemate');
-                document.getElementById('gameResult').innerHTML = "Stalemate";
-                gameEnd= true;
-                this.endGame();
-            }
-            else;
+            i++; 
+
         });
+        if(p1Pos.length + cpuPos.length == 9) //Fixed stalemate bug...
+        {
+            document.getElementById('gameResult').innerHTML = "Stalemate";
+            gameEnd= true;
+            this.endGame();
+        }
     },
     
     cpuTurn()
     {
-            
         if(!gameEnd)
         {
         var randomNum = Math.floor(Math.random() * 9)+1;
 
-        while(cpuPos.includes(randomNum) || p1Pos.includes(randomNum))
+        while(cpuPos.includes(randomNum) || p1Pos.includes(randomNum)) //If random num has already been played
         {
-            randomNum = Math.floor(Math.random() * 9)+ 1;
+            randomNum = Math.floor(Math.random() * 9)+ 1; //Roll random numbers until not
         }
         
         cpuPos.push(randomNum);
         sound.play();
-        
         
         switch (randomNum)
         {
@@ -125,6 +151,8 @@ const obj =
             {
             btnG.disabled = true;
             }); //Disable all buttons after game is won
+            p1Pos = []; //Prevent stalemate bug at turn 9
+            cpuPos =[]; 
     }
 }
 
@@ -138,6 +166,7 @@ btns.forEach(btn =>
     btn.disabled = true;
     btn.style.color='blue';
     sound.play();
+    
     p1Pos.push(parseInt(event.target.id.slice(1)));
     obj.checkWinner();
     obj.cpuTurn();
@@ -155,10 +184,13 @@ reBtn.forEach(btn =>
                 btnG.textContent = '';
                 btnG.disabled = false;
                 }); //Renable game buttons and remove their symbol
-            
+                
+            winLine.style.visibility = "hidden";
             gameEnd= false;
+            
             p1Pos = [];
             cpuPos = []; //Clear both player positions
+            
             document.getElementById('gameResult').innerHTML = "";
         });
 
